@@ -1,47 +1,11 @@
----
 layout: page
-title: Docker 系列文章
+title: docker 系列文章
 titlebar: docker
-subtitle: <span class="mega-octicon octicon-flame"></span>&nbsp;&nbsp; Docker 系列教程
+subtitle: <span class="mega-octicon odocker"></span>&nbsp;&nbsp;
+     <a href ="http://www.ityouknow.com/assets/images/keeppuresmile.jpg">关注公众号：<font color="#00FF00">纯洁的微笑</font>，回复"springcloud"进群交流。</a>
 menu: docker
 css: ['blog-page.css']
 permalink: /docker
-keywords: Docker,DockerFile,Swarm,docker-machine,MCompose,Docker 学习,服务编排
+keywords: docker教程,docker 示例,docker 学习,docker 资源,docker
 ---
-
-<div class="row">
-
-    <div class="col-md-12">
-
-        <ul id="posts-list">
-            {% for post in site.posts %}
-                {% if post.category=='docker'  or post.keywords contains 'docker' or post.keywords contains 'Docker' %}
-                <li class="posts-list-item">
-                    <div class="posts-content">
-                        <span class="posts-list-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
-                        <a class="posts-list-name bubble-float-left" href="{{ site.url }}{{ post.url }}">{{ post.title }}</a>
-                        <span class='circle'></span>
-                    </div>
-                </li>
-                {% endif %}
-            {% endfor %}
-        </ul> 
-
-        <!-- Pagination -->
-        {% include pagination.html %}
-
-        <!-- Comments -->
-       <div class="comment">
-         {% include comments.html %}
-       </div>
-    </div>
-
-</div>
-<script>
-    $(document).ready(function(){
-
-        // Enable bootstrap tooltip
-        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-
-    });
-</script>
+{% include docker.html %}
