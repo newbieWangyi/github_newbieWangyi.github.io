@@ -74,9 +74,9 @@ navs:
     href: /archives.html
     label: Archives
 
-#  -
-#    href: /link.html
-#    label: Link
+  -
+    href: /docker.html
+    label: Docker
 
 #  -
 #    href: /about.html
@@ -120,13 +120,13 @@ labels:
 
 # selected articles
 classes:
-
-  -
+#
+#  -
 #    href: /life.html
 #    name: 我的故事
 #    describe: 生活就是故事，故事就是生活
 
-  -
+#  -
 #    href: /arch.html
 #    name: 架构师之路
 #    describe: 一个架构师的自我修养
