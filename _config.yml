@@ -125,7 +125,7 @@ classes:
 #    href: /life.html
 #    name: 我的故事
 #    describe: 生活就是故事，故事就是生活
- -
+  -
      href: /docker.html
      name: docker
      describe: docker容器
@@ -181,7 +181,7 @@ gitment:
         client_secret: 31c61e66cdcc9ada8db2267ee779d0bdafac434c
 # https://github.com/gitalk/gitalk#install
 gitalk:
-    owner: ityouknow
+    owner: dbbaxbb
     repo: blog-comments
     clientID: 61bfc53d957e74e78f8f
     clientSecret: 31c61e66cdcc9ada8db2267ee779d0bdafac434c
