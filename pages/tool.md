@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Jvm系列文章
+title: 工具系列文章
 titlebar: tool
-subtitle: <span class="mega-octicon octicon-clippy"></span>&nbsp;&nbsp; jvm系列文章
+subtitle: <span class="mega-octicon octicon-clippy"></span>&nbsp;&nbsp; 工具系列文章
 menu: tool
 css: ['blog-page.css']
 permalink: /tool
