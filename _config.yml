@@ -135,9 +135,9 @@ classes:
     describe: 工具的妙用
 
   -
-    href: /jvm.html
-    name: Jvm系列文章
-    describe: Java之根基，Java程序员必学
+    href: /java.html
+    name: Java系列文章
+    describe: 重新认识java
 
 
 # ---------------- #
