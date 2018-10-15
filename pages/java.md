@@ -1,8 +1,8 @@
 ---
 layout: page
-title: Jvm系列文章
+title: Java系列文章
 titlebar: java
-subtitle: <span class="mega-octicon octicon-clippy"></span>&nbsp;&nbsp; jvm系列文章
+subtitle: <span class="mega-octicon octicon-clippy"></span>&nbsp;&nbsp; java系列文章
 menu: java
 css: ['blog-page.css']
 permalink: /java
