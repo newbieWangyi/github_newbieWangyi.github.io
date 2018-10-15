@@ -90,17 +90,15 @@ labels:
 #    href: /share/2017/10/01/resource-sharing.html
 #    name: 资源
 
-  -
-    href: /life.html
-    name: 故事
+#  -
+#    href: /life.html
+#    name: 故事
+#
+#  -
+#    href: /arch.html
+#    name: 架构
+#
 
-  -
-    href: /arch.html
-    name: 架构
-    
-  -
-    href: /jvm.html
-    name: Jvm
 
 #  -
 #    href: /fastdfs.html

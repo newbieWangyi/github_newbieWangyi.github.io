@@ -1,10 +1,20 @@
+---
+layout: page
+title: Jvm系列文章
+titlebar: java
+subtitle: <span class="mega-octicon octicon-clippy"></span>&nbsp;&nbsp; jvm系列文章
+menu: java
+css: ['blog-page.css']
+permalink: /java
+---
+
 <div class="row">
 
     <div class="col-md-12">
 
         <ul id="posts-list">
             {% for post in site.posts %}
-                {% if post.category=='jvm' %}
+                {% if post.category=='java' %}
                 <li class="posts-list-item">
                     <div class="posts-content">
                         <span class="posts-list-meta">{{ post.date | date: "%Y-%m-%d" }}</span>
