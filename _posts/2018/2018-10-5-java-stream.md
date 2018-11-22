@@ -1,6 +1,6 @@
 ---
 layout: post
-title: java 8 stream详解
+title: java8 stream详解
 category: java
 tags: [java]
 ---
