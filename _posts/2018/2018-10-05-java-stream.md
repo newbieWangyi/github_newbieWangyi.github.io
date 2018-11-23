@@ -51,12 +51,12 @@ default V putIfAbsent(K key, V value) {
         if (v == null) {
             v = put(key, value);
         }
- 
         return v;
     }
 
 ```
 注：putIfAbsent()定义在Map接口中，是默认方法。
+
 
 ### 使用filter对流进行判空
 
@@ -90,6 +90,12 @@ default V putIfAbsent(K key, V value) {
       collect(Collectors.groupingBy(Function.identity(),Collectors.counting()));
 
 ```
-
-
-[参考链接](http://www.importnew.com/24029.html)
+之前这么写过
+```
+//只取出现大于1次的字符串
+List<String> collect = list.stream().collect(Collectors.toMap(n -> n, n -> 1, Integer::sum))
+        .entrySet().stream()
+        .filter(entry -> entry.getValue() > 1)
+        .map(k -> k.getKey())
+        .collect(Collectors.toList());
+```
