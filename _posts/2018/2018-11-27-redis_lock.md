@@ -370,7 +370,8 @@ public void unlock() {
      while (pool.getPoolSize() != 0) {}
  }
  ```
-
+测试结果
 
 ![](http://io.dbbaxbb.cn/assets/images/2018/docker/1653b1ac51325e07) <br/>
 
+[参考链接](http://ifeve.com/%E5%9F%BA%E4%BA%8Eredis%E7%9A%84%E5%88%86%E5%B8%83%E5%BC%8F%E9%94%81/)
