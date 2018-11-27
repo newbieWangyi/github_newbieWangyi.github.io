@@ -18,11 +18,13 @@ tags: [tool]
 ### 2，分布式锁
 
 #### 2.1 什么是分布式锁
+
 分布式锁是控制分布式系统或不同系统之间共同访问共享资源的一种锁实现，如果不同的系统或同一个系统的不同主机之间共享了某个资源时，往往需要互斥来防止彼此干扰来保证一致性。
 
 
 
 #### 2.2 分布式锁需要具备哪些条件
+
 1, 互斥性：在任意时刻，只有一个客户端持有锁
 2，无死锁：即便持有锁的客户端崩溃或者其它意外事件，锁任然可以被获取
 3，容错：只要大部分Redis节点都活着，客户端就可以获取和释放锁
@@ -38,6 +40,7 @@ tags: [tool]
 #### 3.1 准备工作
 
 ##### 3.1.1 定义常量类
+
  ```
  public class LockConstants {
      public static final String OK = "OK";
@@ -54,7 +57,9 @@ tags: [tool]
  }
  ```
 ##### 3.1.2 定义锁的抽象类
+
 抽象类RedisLock实现java.util.concurrent包下的Lock接口，然后对一些方法提供默认实现，子类只需实现lock方法和unlock方法即可。代码如下
+
  ```
 public abstract class RedisLock implements Lock {
  
@@ -132,6 +137,7 @@ LockCase1类提供了lock和unlock方法，其中lock方法也就是在redis客�
 
 但仔细想一下，这个功能会出现什么问题呢
 假如有两个客户端A和B,A获得分布式的锁。A执行了一会，突然A所在的服务器断电了（或者其他什么），也就是客户端A挂了，这是出现了一个问题，这个锁一直存在，且不会被释放，其他客户端永远也获不得锁。
+
 ![](http://io.dbbaxbb.cn/assets/images/2018/docker/redisLock.png) <br/>
 
 可以通过设置过期时间来解决这个问题
@@ -163,7 +169,9 @@ LockCase1类提供了lock和unlock方法，其中lock方法也就是在redis客�
 * 30秒到了，锁自动释放
 * 客户端B获取到对应的同一个资源的锁
 * 客户端A从阻塞中恢复过来，释放掉客户端B持有的锁
+
 示意图如下：
+
 ![](http://io.dbbaxbb.cn/assets/images/2018/docker/redisLock1.png) <br/>
 
 这时会有两个问题
@@ -223,6 +231,7 @@ LockCase1类提供了lock和unlock方法，其中lock方法也就是在redis客�
 这时看看加锁代码，好像没有什么问题啊。再来看看解锁的代码，这里的解锁操作包含三步操作：获取值、判断和删除锁。这时你有没有想到在多线程环境下的i++操作?
 
 ##### 3.2.4 i++问题
+
 i++操作也可分为三个步骤：读i的值，进行i+1，设置i的值。
 如果两个线程同时对i进行i++操作，会出现如下情况
 
@@ -236,7 +245,9 @@ i++操作也可分为三个步骤：读i的值，进行i+1，设置i的值。
 在多线程环境下有什么方式可以避免这类情况发生?
 解决方式有很多种，例如用AtomicInteger、CAS、synchronized等等。
 这些解决方式的目的都是要确保i++ 操作的原子性。那么回过头来看看解锁，同理我们也是要确保解锁的原子性。我们可以利用Redis的lua脚本来实现解锁操作的原子性。
+
 ##### 3.2.5 具有原子性的释放锁
+
 lua脚本内容如下
 
  ```
@@ -261,7 +272,7 @@ public void unlock() {
  ```
  好了，解锁操作也确保了原子性了，就差过期时间待解决了。
  
- ##### 3.2.6 确保过期时间大于业务执行时间
+##### 3.2.6 确保过期时间大于业务执行时间
  抽象类RedisLock增加一个boolean类型的属性isOpenExpirationRenewal，用来标识是否开启定时刷新过期时间。
  在增加一个scheduleExpirationRenewal方法用于开启刷新过期时间的线程。
  
@@ -360,6 +371,6 @@ public void unlock() {
      while (pool.getPoolSize() != 0) {}
  }
  ```
-结果如下图
 
-![](http://io.dbbaxbb.cn/assets/images/2018/docker/1653b1ac51325e07) <br/>
+
+
